@@ -8,6 +8,10 @@
 # define DIRENT_H
 # include <dirent.h>
 #endif
+#ifndef STDIO_H
+# define STDIO_H
+# include <stdio.h>
+#endif
 #include "libft.h"
 
 char	*ft_search_dir(char *path, char *name)
@@ -21,10 +25,14 @@ char	*ft_search_dir(char *path, char *name)
 	if (!dirp)
 		return NOT_FOUND;
 	while ((dp = readdir(dirp)) != NULL)
-		if (dp->d_namlen == len && !strcmp(dp->d_name, name)) {
+	{
+		printf("Addresse de dp : %p\n", dp);
+		if (dp->d_namlen == len && !strcmp(dp->d_name, name))
+		{
 			(void)closedir(dirp);
 			return FOUND;
 		}
+	}
 	(void)closedir(dirp);
 	return NOT_FOUND;
 }
@@ -35,5 +43,7 @@ int		main(int argc, char **argv)
 	{
 		ft_putendl(ft_search_dir(argv[1], argv[2]));
 	}
+	else
+		printf("Usage : ./test_ls <Directory> <To_Find>");
 	return (0);
 }
