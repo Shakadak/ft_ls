@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/10 16:58:11 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/10 19:13:37 by npineau          ###   ########.fr       */
+/*   Updated: 2013/12/11 12:04:05 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef DIRENT_H
@@ -14,13 +14,6 @@
 # include <dirent.h>
 #endif
 #include "libft.h"
-
-typedef struct		s_tree
-{
-	struct dirent	*spec;
-	struct s_tree	*left;
-	struct s_tree	*right;
-}					t_tree;
 
 int				main(int argc, char **argv)
 {
@@ -42,4 +35,21 @@ int				main(int argc, char **argv)
 	while((dp = readdir(dirp)) != NULL)
 }
 
-static t_tree	*ft_new_node(const struct dirent *src
+static t_btree	*ft_cpy_node(t_btree *new, struct dirent *src)
+{
+	new->spec = (struct dirent *)malloc(sizeof(src));
+	if (!new->spec)
+	{
+		free(new);
+		return (NULL);
+	}
+	tmp = ft_cpy_dirent(src);
+	if (!tmp)
+	{
+		free(new->spec);
+		free(new);
+		return (NULL);
+	}
+	new->spec = tmp;
+	return (new);
+}
