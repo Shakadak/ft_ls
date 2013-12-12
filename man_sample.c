@@ -1,31 +1,32 @@
+/* ************************************************************************** */
 #ifndef FOUND
 # define FOUND ("FOUND")
 #endif
 #ifndef NOT_FOUND
 # define NOT_FOUND ("NOT FOUND")
 #endif
-#ifndef DIRENT_H
-# define DIRENT_H
-# include <dirent.h>
-#endif
-#ifndef STDIO_H
-# define STDIO_H
-# include <stdio.h>
-#endif
+#include <dirent.h>
+#include <stdio.h>
 #include "libft.h"
+#include <sys/stat.h>
+#include <stdlib.h>
 
 char	*ft_search_dir(char *path, char *name)
 {
 	DIR				*dirp;
 	struct dirent	*dp;
 	int				len;
+	struct stat		*dstat;
 
+	dstat = (struct stat *)malloc(sizeof(struct stat));
 	len = strlen(name);
 	dirp = opendir(path);
 	if (!dirp)
 		return NOT_FOUND;
 	while ((dp = readdir(dirp)) != NULL)
 	{
+		stat(dp->d_name, dstat);
+		printf("Last modification time of %s: %ld\n", dp->d_name, dstat->st_mtime);
 		printf("Addresse de dp : %p\n", dp);
 		if (dp->d_namlen == len && !strcmp(dp->d_name, name))
 		{

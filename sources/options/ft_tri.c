@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   ft_tri.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/11 12:57:31 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/12 11:45:06 by npineau          ###   ########.fr       */
+/*   Created: 2013/12/12 11:39:43 by npineau           #+#    #+#             */
+/*   Updated: 2013/12/12 12:53:17 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef FT_LS_H
-# define FT_LS_H
+#include "ft_ls.h"
+#include "libft.h"
 
-typedef struct	s_opt
+int	ft_tri(t_btree *current, t_btree *new, t_opt *opt)
 {
-	int			l;
-	int			a;
-	int			t;
-	int			r;
-	int			rev;
-}				t_opt;
+	time_t	*ctime;
+	time_t	*ntime;
 
-typedef struct		s_ddata
-{
-	char			*name;
-	struct stat		*dstat;
-}					t_ddata;
-
-typedef struct		s_btree
-{
-	t_ddata			*spec;
-	struct s_tree	*left;
-	struct s_tree	*right;
-}					t_btree;
-
-#endif
+	if (opt->t)
+	{
+		ctime = current->spec->dstat->st_mtime;
+		ntime = new->spec->dstat->st_mtime;
+		return (ctime - ntime);
+	}
+	return (ft_strcmp(new->spec->name, current->spec->name));
+}
