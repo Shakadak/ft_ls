@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/12 16:15:34 by npineau           #+#    #+#              #
-#    Updated: 2013/12/12 16:49:16 by npineau          ###   ########.fr        #
+#    Updated: 2013/12/12 19:25:56 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_ls
@@ -37,4 +37,4 @@ all: $(LIBFT)
 
 $(LIBFT):
 	make -C libft fclean
-	make _C libft all
+	make -C libft all
