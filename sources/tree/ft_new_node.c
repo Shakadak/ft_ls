@@ -6,9 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/11 19:18:41 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/11 19:21:33 by npineau          ###   ########.fr       */
+/*   Updated: 2013/12/13 18:01:07 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_ls.h"
+#include <stdlib.h>
 
 /*
 ** Create a new node, and allocate it and initialize every element to NULL.

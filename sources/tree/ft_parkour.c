@@ -6,11 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/12 13:22:35 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/12 15:00:57 by npineau          ###   ########.fr       */
+/*   Updated: 2013/12/13 18:49:59 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_ls"
+#include <string.h>
+#include "ft_ls.h"
 
 void	ft_parkour(t_btree *current, t_opt *opt)
 {
@@ -18,5 +18,5 @@ void	ft_parkour(t_btree *current, t_opt *opt)
 		ft_parkour(current->left, opt);
 	ft_print(current->spec, opt);
 	if (current->right != NULL)
-		ft_parkour(current->right);
+		ft_parkour(current->right, opt);
 }

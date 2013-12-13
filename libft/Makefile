@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2013/12/07 18:23:02 by npineau          ###   ########.fr        #
+#    Updated: 2013/12/13 16:35:50 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ $(NAME): $(OBJ)
 indexation: $(NAME)
 	ranlib $^
 
-%.o: %.c
+%.o: sources/%.c
 	@(gcc -Wall -Wextra -Werror -O3 -c $^ -I includes/)
 
 clean:

@@ -6,11 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/12 15:40:23 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/12 15:40:26 by npineau          ###   ########.fr       */
+/*   Updated: 2013/12/13 18:46:17 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls"
+#include "ft_ls.h"
 #include "libft.h"
 
 void	ft_print(t_ddata *spec, t_opt *opt)
