@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_dir.c                                      :+:      :+:    :+:   */
+/*   ft_read_param.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/13 15:36:29 by npineau           #+#    #+#             */
-/*   Updated: 2013/12/13 15:49:44 by npineau          ###   ########.fr       */
+/*   Created: 2013/12/13 15:23:49 by npineau           #+#    #+#             */
+/*   Updated: 2013/12/13 15:24:10 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_ls.h"
+#include <sys/stat.h>
 
-t_btree	*ft_read_dir(char *path, t_opt *opt)
+/*
+** Read the parameter, store its stats and return the resulting structure.
+*/
+
+t_ddata	ft_read_param(char *path)
 {
-	DIR				*dirp;
-	struct dirent	*dp;
-	t_btree			*root;
-	t_btree			*tmp;
+	t_ddata	spec;
 
-	root = NULL;
-	dirp = opendir(path);
-	if (!dirp)
-		ft_print_error(path);
-	while ((dp = readdir(dirp)) != NULL)
-	{
-		tmp = ft_new_node();
-		tmp->spec = ft_read_param(dp->name);
-		root = ft_place_node(root, tmp, opt);
-	}
-	closedir(dirp);
-	return (root);
+	spec = ft_new_ddata();
+	spec->name = path;
+	stat(path, spec->dstat);
+	return (spec)
 }
